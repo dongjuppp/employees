@@ -1,5 +1,6 @@
 package dongjuppp.study.employees.employee.salary;
 
+import dongjuppp.study.employees.common.Period;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,9 +24,6 @@ public class Salary {
     @Column(name = "salary")
     private long salary;
 
-    @Column(name = "from_date")
-    private Date fromDate;
-
-    @Column(name = "to_date")
-    private Date toDate;
+    @Embedded
+    private Period period;
 }

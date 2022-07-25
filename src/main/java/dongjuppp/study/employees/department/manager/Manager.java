@@ -1,7 +1,12 @@
 package dongjuppp.study.employees.department.manager;
 
+import dongjuppp.study.employees.common.Period;
 import dongjuppp.study.employees.department.Department;
 import dongjuppp.study.employees.employee.Employee;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,6 +14,10 @@ import java.util.Date;
 @Entity
 @Table(name = "dept_manager")
 @IdClass(ManagerId.class)
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Manager {
 
     @Id
@@ -21,10 +30,7 @@ public class Manager {
     @JoinColumn(name = "dept_no")
     private Department department;
 
-    @Column(name = "from_date")
-    private Date fromDate;
-
-    @Column(name = "to_date")
-    private Date toDate;
+    @Embedded
+    private Period period;
 
 }

@@ -1,5 +1,6 @@
 package dongjuppp.study.employees.employee;
 
+import dongjuppp.study.employees.common.Period;
 import dongjuppp.study.employees.employee.salary.Salary;
 import dongjuppp.study.employees.employee.salary.SalaryRepository;
 import dongjuppp.study.employees.employee.title.Title;
@@ -30,8 +31,6 @@ public class SalaryAndTitleTest {
                 .empNo(10001)
                 .firstName("lionel")
                 .lastName("messi")
-                .hireDate(new Date())
-                .birthDate(new Date())
                 .salary(salary())
                 .title(title())
                 .gender(Gender.M)
@@ -39,19 +38,19 @@ public class SalaryAndTitleTest {
     }
 
     Salary salary(){
+        Period period = new Period(new Date(), new Date());
         return Salary.builder()
                 .empNo(10001)
-                .fromDate(new Date())
-                .toDate(new Date())
+                .period(period)
                 .salary(50000)
                 .build();
     }
 
     Title title(){
+        Period period = new Period(new Date(), new Date());
         return Title.builder()
                 .empNo(10001)
-                .fromDate(new Date())
-                .toDate(new Date())
+                .period(period)
                 .title("title")
                 .build();
     }
