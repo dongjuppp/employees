@@ -1,4 +1,4 @@
-package dongjuppp.study.employees.employee;
+package dongjuppp.study.employees.employee.salary;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,20 +9,19 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "titles")
+@Table(name = "salaries")
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
-public class Title {
+public class Salary {
 
     @Id
     @Column(name = "emp_no")
     private long empNo;
 
-
-    @Column(name = "title")
-    private String title;
+    @Column(name = "salary")
+    private long salary;
 
     @Column(name = "from_date")
     private Date fromDate;

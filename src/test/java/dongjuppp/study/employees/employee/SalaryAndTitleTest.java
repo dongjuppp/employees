@@ -1,5 +1,9 @@
 package dongjuppp.study.employees.employee;
 
+import dongjuppp.study.employees.employee.salary.Salary;
+import dongjuppp.study.employees.employee.salary.SalaryRepository;
+import dongjuppp.study.employees.employee.title.Title;
+import dongjuppp.study.employees.employee.title.TitleRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
