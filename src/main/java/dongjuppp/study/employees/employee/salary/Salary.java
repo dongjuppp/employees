@@ -19,7 +19,7 @@ public class Salary {
 
     @Id
     @Column(name = "emp_no")
-    private long empNo;
+    private Long empNo;
 
     @Column(name = "salary")
     private long salary;

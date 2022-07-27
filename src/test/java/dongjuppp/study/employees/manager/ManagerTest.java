@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,12 +22,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 public class ManagerTest {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
-
-    @Autowired
-    private DepartmentRepository departmentRepository;
-
+    @PersistenceContext
+    private EntityManager entityManager;
     @Autowired
     private ManagerRepository managerRepository;
 
@@ -34,16 +32,17 @@ public class ManagerTest {
         Employee messi = EmployeeMaker.messi();
         Department barca = DepartmentMaker.barcelona();
 
-        employeeRepository.save(messi);
-        departmentRepository.save(barca);
         Manager origin = new Manager(messi, barca, new Period(new Date(), new Date()));
 
-        managerRepository.save(origin);
+        entityManager.persist(messi);
+        entityManager.persist(barca);
+        entityManager.persist(origin);
+
         Manager manager = managerRepository
                 .getManagerByEmployee_EmpNoAndDepartment_DeptNo(messi.getEmpNo(), barca.getDeptNo());
 
         assertThat(manager.getEmployee().getEmpNo()).isEqualTo(messi.getEmpNo());
         assertThat(manager.getEmployee().getLastName()).isEqualTo(messi.getLastName());
-        //assertThat(manager).isNull();
+        assertThat(manager.getEmployee() != messi).isFalse();
     }
 }

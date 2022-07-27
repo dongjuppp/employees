@@ -28,7 +28,7 @@ public class SalaryAndTitleTest {
 
     Employee messi(){
         return Employee.builder()
-                .empNo(10001)
+                .empNo(10001L)
                 .firstName("lionel")
                 .lastName("messi")
                 .salary(salary())
@@ -40,7 +40,7 @@ public class SalaryAndTitleTest {
     Salary salary(){
         Period period = new Period(new Date(), new Date());
         return Salary.builder()
-                .empNo(10001)
+                .empNo(10001L)
                 .period(period)
                 .salary(50000)
                 .build();
@@ -49,7 +49,7 @@ public class SalaryAndTitleTest {
     Title title(){
         Period period = new Period(new Date(), new Date());
         return Title.builder()
-                .empNo(10001)
+                .empNo(10001L)
                 .period(period)
                 .title("title")
                 .build();

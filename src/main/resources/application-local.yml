@@ -1,7 +1,19 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     properties:
       hibernate:
         format_sql: true
+        show_sql: true
+  datasource:
+    hikari:
+      driver-class-name: org.h2.Driver
+      username: dongju
+      password: dongju
+      jdbc-url: jdbc:h2:mem:test
+
+
+logging:
+  level:
+    org.hibernate.sql: debug

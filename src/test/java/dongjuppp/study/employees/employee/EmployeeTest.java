@@ -21,7 +21,7 @@ class EmployeeTest {
         Period period = new Period(new Date(), new Date());
 
         return Employee.builder()
-                .empNo(10001)
+                .empNo(10001L)
                 .firstName("wayne")
                 .lastName("rooney")
                 .period(period)
@@ -33,7 +33,7 @@ class EmployeeTest {
     Salary salary(){
         Period period = new Period(new Date(), new Date());
         return Salary.builder()
-                .empNo(10001)
+                .empNo(10001L)
                 .period(period)
                 .salary(50000)
                 .build();
@@ -42,7 +42,7 @@ class EmployeeTest {
     Title title(){
         Period period = new Period(new Date(), new Date());
         return Title.builder()
-                .empNo(10001)
+                .empNo(10001L)
                 .period(period)
                 .title("title")
                 .build();

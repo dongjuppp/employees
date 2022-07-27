@@ -19,7 +19,7 @@ public class Title {
 
     @Id
     @Column(name = "emp_no")
-    private long empNo;
+    private Long empNo;
 
 
     @Column(name = "title")
