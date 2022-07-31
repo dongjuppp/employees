@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -57,10 +58,25 @@ class EmployeeTest {
 
         Employee fromDbRooney = repository.getEmployeeByEmpNo(rooney.getEmpNo());
 
+        assertThat(fromDbRooney.getSalary().getSalary()).isEqualTo(50000);
+
         assertThat(fromDbRooney)
                 .isNotNull()
                 .extracting(Employee::getFirstName)
                 .isEqualTo(rooney.getFirstName());
+    }
+
+
+    @Test
+    @DisplayName("최대 연봉 사원 조회 테스트")
+    void findMaxSalaryEmployeeTest(){
+        Employee employee = rooney();
+
+        repository.save(employee);
+
+        List<Employee> employees = repository.findMaxSalaryEmployee();
+
+        assertThat(employees.size()).isEqualTo(1);
     }
 
 }
